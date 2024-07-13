@@ -9,8 +9,9 @@ const CustomerTable = () => {
   const [filter, setFilter] = useState({ name: '', amount: '' });
 
   useEffect(() => {
-    axios.get('/db.json')
+    axios.get('https://Omar-Abosea3.github.io/customer-transactions-data/db.json')
       .then((response) => {
+        console.log(response);
         setCustomers(response.data.customers);
         setTransactions(response.data.transactions);
       })
