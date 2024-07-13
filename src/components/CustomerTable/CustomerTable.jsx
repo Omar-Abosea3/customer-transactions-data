@@ -11,7 +11,7 @@ const CustomerTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const customersResponse = await axios.get('https://your-username.github.io/customer-transactions-data/db.json');
+        const customersResponse = await axios.get('https://Omar-Abosea3.github.io/customer-transactions-data/db.json');
         setCustomers(customersResponse.data.customers);
         setTransactions(customersResponse.data.transactions);
       } catch (error) {
