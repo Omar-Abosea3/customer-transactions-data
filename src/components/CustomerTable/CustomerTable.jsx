@@ -9,21 +9,17 @@ const CustomerTable = () => {
   const [filter, setFilter] = useState({ name: '', amount: '' });
 
   useEffect(() => {
-    axios.get('http://localhost:5000/customers')
-      .then((response) => {
-        setCustomers(response.data);
-      })
-      .catch((error) => {
+    const fetchData = async () => {
+      try {
+        const customersResponse = await axios.get('https://your-username.github.io/customer-transactions-data/db.json');
+        setCustomers(customersResponse.data.customers);
+        setTransactions(customersResponse.data.transactions);
+      } catch (error) {
         console.log(error);
-      });
+      }
+    };
 
-    axios.get('http://localhost:5000/transactions')
-      .then((response) => {
-        setTransactions(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    fetchData();
   }, []);
 
   const handleFilterChange = (e) => {
