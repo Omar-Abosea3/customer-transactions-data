@@ -9,17 +9,10 @@ const CustomerTable = () => {
   const [filter, setFilter] = useState({ name: '', amount: '' });
 
   useEffect(() => {
-    axios.get('http://localhost:5000/customers')
+    axios.get('/db.json')
       .then((response) => {
-        setCustomers(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    axios.get('http://localhost:5000/transactions')
-      .then((response) => {
-        setTransactions(response.data);
+        setCustomers(response.data.customers);
+        setTransactions(response.data.transactions);
       })
       .catch((error) => {
         console.log(error);
